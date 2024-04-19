@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from '../Chat/Chat.module.css';
 import { Message } from '../../types/Messages';
 
