@@ -2,6 +2,7 @@
 This is an client side of online chat where you can discuss topics with other users in real-time.
 
 [Chat Link](https://main--prismatic-florentine-6fca97.netlify.app/)
+
 [Server Side Code](https://github.com/rvoshchylo/online-chat-server)
 
 ## How to Use
