@@ -1,9 +1,18 @@
 # Online Chat
-This is an client side of online chat where you can discuss topics with other users in real-time.
+This is a client-side online chat where you can discuss topics with other users in real time.
 
 [Chat Link](https://main--prismatic-florentine-6fca97.netlify.app/)
 
 [Server Side Code](https://github.com/rvoshchylo/online-chat-server)
+
+## Technologies Used
+
+- **React**: A JavaScript library for building user interfaces.
+- **React Router DOM**: A routing library for React that enables navigation and routing between different components in a React application.
+- **Socket.IO Client**: A client library for Socket.IO that allows real-time communication with the server.
+- **Eslint**: A tool for identifying and reporting on patterns found in ECMAScript/JavaScript code.
+- **Web Vitals**: A library for measuring and reporting real user performance on the web.
+
 
 ## How to Use
 
