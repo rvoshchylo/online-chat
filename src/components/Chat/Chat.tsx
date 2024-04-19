@@ -5,7 +5,7 @@ import styles from './Chat.module.css';
 import { Message } from '../../types/Messages';
 import { Messages } from '../Messages';
 
-const socket = io('https://online-chat-server-fl6f.onrender.com');
+const socket = io('https://online-chat-server-one.vercel.app');
 
 const Chat: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([]);
