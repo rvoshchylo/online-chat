@@ -37,7 +37,7 @@ const Main: React.FC = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const socket = io('http://localhost:5001');
+    const socket = io('https://main--prismatic-florentine-6fca97.netlify.app/');
     let errorOccurred = false;
 
     socket.emit('joinCheck', { name: values[name], room: values[room] });
