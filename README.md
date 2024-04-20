@@ -1,30 +1,40 @@
-# React + TypeScript + Vite
+# Online Chat
+This is a client-side online chat where you can discuss topics with other users in real time.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[Chat Link](https://main--prismatic-florentine-6fca97.netlify.app/)
 
-Currently, two official plugins are available:
+[Server Side Code](https://github.com/rvoshchylo/online-chat-server)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies Used
 
-## Expanding the ESLint configuration
+- **React**: A JavaScript library for building user interfaces.
+- **React Router DOM**: A routing library for React that enables navigation and routing between different components in a React application.
+- **Socket.IO Client**: A client library for Socket.IO that allows real-time communication with the server.
+- **Eslint**: A tool for identifying and reporting on patterns found in ECMAScript/JavaScript code.
+- **Web Vitals**: A library for measuring and reporting real user performance on the web.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-- Configure the top-level `parserOptions` property like this:
+## How to Use
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+1. Open the chat website.
+2. Enter your nickname and room number.
+3. Click the "Join" button.
+4. Start chatting with other users who are in the same room.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Features
+
+- **Registration and Login**: You can choose your nickname and room number to enter.
+- **Real-Time Messaging**: After entering a room, you can send messages and see messages from other users in real-time.
+- **Leaving Room**: If you wish to leave the room, you can click the "Leave Room" button.
+
+## Technical Requirements
+
+To run this chat, you need a web browser and internet access. There is no need to install additional programs or extensions.
+
+## Development and Contributions
+
+If you would like to contribute to the development of this chat or have found an issue, please open an issue ticket or submit a pull request.
+
+## Author
+
+This chat was created by Ruslan Voshchylo
