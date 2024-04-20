@@ -17,7 +17,7 @@ const Main: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const socket = io('http://localhost:5001');
+    const socket = io('https://online-chat-server-s4np.onrender.com');
 
     socket.on('error', (errorMessage: string) => {
       setError(errorMessage);
