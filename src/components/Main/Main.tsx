@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from './Main.module.css';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import io from 'socket.io-client';
+import cn from 'classnames';
 
 const FIELDS = {
   name: 'name',
@@ -11,36 +13,67 @@ const Main: React.FC = () => {
   const { name, room } = FIELDS;
   
   const [values, setValues] = useState({ [name]: '', [room]: '' });
+  const [error, setError] = useState<string>('');
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const socket = io('http://localhost:5001');
+
+    socket.on('error', (errorMessage: string) => {
+      setError(errorMessage);
+    });
+
+    return () => {
+      socket.disconnect();
+    };
+  }, []);
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setValues({ ...values, [name]: value });
+    setError('');
   }
 
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    const isDisabled = Object.values(values).some(value => !value);
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
-    if (isDisabled) {
-      e.preventDefault();
-    }
+    const socket = io('http://localhost:5001');
+    let errorOccurred = false;
+
+    socket.emit('joinCheck', { name: values[name], room: values[room] });
+
+    socket.on('error', (errorMessage: string) => {
+      setError(errorMessage);
+      errorOccurred = true;
+    });
+
+
+    setTimeout(() => {
+      if (!errorOccurred) {
+        navigate(`/chat?name=${values[name]}&room=${values[room]}`);
+      }
+    }, 100);
   }
 
   return (
       <div className={styles.wrap}>
         <div className={styles.container}>
           <h1 className={styles.heading}>Join</h1>
-          <form className={styles.form}>
+        <form className={styles.form} onSubmit={handleSubmit}>
             <div className={styles.group}>
               <input 
                 type="text" 
                 name='name' 
                 value={values[name]}
                 placeholder='name'
-                className={styles.input}
+                className={cn(styles.input, { [styles.error]: error.length > 0 })}
                 onChange={handleOnChange}
                 autoComplete='off'
                 required
                />
+              <div className={styles.errorMessage}>
+                  {error}
+              </div>
             </div>
             <div className={styles.group}>
               <input 
@@ -54,14 +87,9 @@ const Main: React.FC = () => {
                 required
                />
             </div>
-            <Link 
-              to={`/chat?name=${values[name]}&room=${values[room]}`}
-              onClick={handleClick}
-            >
-              <button className={styles.button} type='submit'>
+            <button className={styles.button} type='submit'>
                 Join
-              </button>
-            </Link>
+            </button>
           </form>
         </div>
       </div>
